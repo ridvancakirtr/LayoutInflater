@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LayoutInflater</string>
+    <string name="inflate_edildi">Inflate Edildi</string>
+</resources>

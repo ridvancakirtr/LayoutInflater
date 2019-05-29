@@ -6,41 +6,40 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ContextMenu
 import android.view.LayoutInflater
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
-// Var olan xml alınıp ilgili xml e dönüştürülür.
+// Var olan xml alınıp ilgili view e dönüştürülür.
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // inflater erişme çeşitleri
-        var inflater=layoutInflater
+        //Inflater Oluşturma Çeşitleri
+        var inflater = layoutInflater
         //var inflater2=LayoutInflater.from(this@MainActivity)
-        //var inflater3=getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        /**
-         * var view=inflater.inflate(R.layout.layout_text_view,null)
-         * iceridekiLayout.addView(view)
+        //var inflater3=getSystemService(Context.LAYOUT_INFLATER_SERVICE)
 
-         * view nesnesinde textview var
-         * root null
-         * layoutparams null
-         *
-         * Dönüştürdüğümüz view'ı bir viewgroupa eklediğimizde, eklenilen view layoutparams yani genişlik yükseklik oriantation gibi
-         * değerleri root Layoutundan yani eklendiği parenttan alır.
-         * rootLayout.addView(view)
-         *
-         * Log.e("INFLATION",""+view.parent)
-         * Log.e("INFLATION",""+view.layoutParams)
-         *
-         */
-        //var view=inflater.inflate(R.layout.layout_text_view,iceridekiLayout,true) aynı şey alttakinle
-        //var view=inflater.inflate(R.layout.layout_text_view,iceridekiLayout)
+        //Geriye View Döndürür
+        //var view=inflater.inflate(R.layout.layout_text_view,null)
+        //rootLayout.addView(view) //root Layouta Ekledik ve root layoutun tüm özelliklerini kullanır yüksekli ve uzunluk değerleri gibi
+        //iceridekiLayout.addView(view) // textview alıp bunun içene yapıştırmışız anlamına gelir. Burada İcerik layoutun tüm özelliklerini alır
+
+        //Log.e("INFLATION", ""+view.parent) //rootLayout
+        //Log.e("INFLATION", ""+view.layoutParams) //frameLayout | Framelayoutun özelliklerini tuttar. Genişlik Yükseklik Oriantation gibi.
+
+        //---------------------
+
+        //var view=inflater.inflate(R.layout.layout_text_view,iceridekiLayout)  -> Aynı
+        //var view=inflater.inflate(R.layout.layout_text_view,iceridekiLayout,true)  -> Aynı
+
 
         var view=inflater.inflate(R.layout.layout_text_view,iceridekiLayout,false)
-        Log.e("INFLATION",""+view.parent) //null geldi
-        Log.e("INFLATION",""+view.layoutParams) //lineear Layout
+        //bu şekilde yaptığım zaman içinde linear layout yok sadece text_view mevcut
+        Log.e("INFLATION", ""+view.parent) // null
+        Log.e("INFLATION", ""+view.layoutParams) //linear layout
 
-        iceridekiLayout.addView(view)
+        iceridekiLayout.addView(view)  // layout_text_view si elle eklemek için kullanırız
+
     }
 }
